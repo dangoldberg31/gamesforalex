@@ -65,7 +65,7 @@ export const GameBoard = () => {
         <div>
             <h2 id="playerMessage">{playerMessage}</h2>
             {/* <h4>{player1 ? player1.name : null}</h4> */}
-            <h4>{!playerSelectDisplay ? turnOrder[0].name+turnOrder[1].name: null}</h4>
+            {/* <h4>{!playerSelectDisplay ? turnOrder[0].name+turnOrder[1].name: null}</h4> */}
             <PlayerSelectContainer 
                 boardDisplay={boardDisplay} setBoardDisplay={setBoardDisplay}
                 player1 = {player1} setPlayer1={setPlayer1} 
