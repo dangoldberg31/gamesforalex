@@ -6,7 +6,8 @@ export const PlayerSelectContainer = ({
     boardDisplay, setBoardDisplay,
     player1, setPlayer1, 
     player2, setPlayer2, 
-    setTurnOrder,
+    currentPlayer,
+    turnOrder, setTurnOrder,
     turnCount,
     setPlayerMessage,
     playerSelectDisplay, setPlayerSelectDisplay
@@ -20,8 +21,9 @@ export const PlayerSelectContainer = ({
                 player2={player2} setPlayer2={setPlayer2} 
                 setPlayerSelectDisplay={setPlayerSelectDisplay}
                 setPlayerMessage={setPlayerMessage} 
+                currentPlayer={currentPlayer}
                 turnCount={turnCount}
-                setTurnOrder={setTurnOrder}/>
+                turnOrder={turnOrder} setTurnOrder={setTurnOrder}/>
         )   
     } else {
         return null;

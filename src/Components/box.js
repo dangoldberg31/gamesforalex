@@ -1,54 +1,49 @@
-// import alexPhoto from './alexsunglasses.jpg';
-// import davidPhoto from './david.jpg';
-// import jessPhoto from './jess.jpg';
 import background from './background.jpg';
 import './boxComponent.css';
 import {useState} from 'react';
 
 export const Box = ({
-    styles, id, 
+    id, 
     turnCount, setTurnCount, 
     turnOrder,
     boardState, setBoardState, 
-    player1, player2,
-    currentPlayer,
-    endState
+    // player1, player2,
 }) => {
         
     const [boxAssign, setBoxAssign] = useState('free');
+    const [boxValue, setBoxValue] = useState(0);
     const [boxPhoto, setBoxPhoto] = useState(background);
 
-    // useEffect(() => {
-    //     if ( endState === true)    
-    // })
+    const boxVal = () => {
+        let num = turnCount % 2;
+        if (num === 0) {
+            num = -1
+        }
+        return num;
+    }
 
     const handleClick = (event) => {
         if (boxAssign !== 'free') {
             return;
         }
-        setBoxAssign(currentPlayer.name);
-        setBoxPhoto(currentPlayer.photo)
+        // setBoxAssign(turnOrder[turnCount].name);
+        setBoxAssign(turnOrder[turnCount].name);
+        setBoxValue(boxVal())
+        setBoxPhoto(turnOrder[turnCount].photo)
         let boardArray = boardState;
-        boardArray[id] = turnOrder[turnCount];
+        // boardArray[id] = turnOrder[turnCount];
+        boardArray[id] = boxVal();
         setBoardState(boardArray)
-
-            // if (turnOrder[turnCount] === "Alex") {
-            //     setImage(alex);
-            // } else if (currentPlayer === "David") {
-            //     setImage(david);
-            // } else if (currentPlayer === "Jess") {
-            //     setImage(jess);
-            // }
-
-            setTurnCount((prev) => prev+1)
-        // }
-}
+        setTurnCount((prev) => prev+1)
+    }
   
     return (
             <div>
+                {/* <p>{turnOrder[turnCount].name}</p> */}
                 <img className="box" 
                     id={id}  
                     name = {boxAssign} 
+                    value = {boxValue}
                     onClick={handleClick}  
                     src = {boxPhoto}
                      alt="box" />
