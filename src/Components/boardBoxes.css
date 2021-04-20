@@ -15,41 +15,42 @@ div.box {
 .gameboardplayercontainer {
     width: 1fr;
     margin: 20px;
-    display: block;
+    display: inline-block;
     align-content: center;
 }
 
-span {
+span.name {
     text-align: center;
+    display: block;
+    font-size: 1.3rem;
+    font-family: 'bebas neue';
 }
 
 #exterior {
     width: 5fr;
     margin: 2%;
+    padding: 0;
     display: block;
+}
+
+.playerphoto {
+    border-radius: 10px;
 }
 
 #board {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    gap: 3%;
+    gap: 10px;
     background-color: hsl(206, 50%, 50%);
-    border: black solid 1px;
+    /* border: black solid 1px; */
     align-content: center;
     text-align: center;
-    padding: 4%;
+    padding: 10px;
     margin: 0%;
     border-radius: 15px;
-    width: 103%;
+    width: 100%;
     height: 100%;
   }
 
-  img.box {
-    text-align: center;
-    font-size: 4em;
-    line-height: .9em;
-    background-color: hsl(206, 50%, 80%);
-    width: 162px !important;
-    height: 162px !important;
-  }
+ 
