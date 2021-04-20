@@ -13,7 +13,9 @@ export const BoardBoxes = ({
     endState
     }) => {
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const activeStyle = {border: "hsl(206, 50%, 50%) 6px solid", padding: "0"}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const inactiveStyle = {border: "6px", opacity: ".5"}
     
     const boxNums = [0, 1, 2, 3, 4, 5, 6, 7, 8]; 
@@ -23,7 +25,8 @@ export const BoardBoxes = ({
     
     
     useEffect(() => {
-        setTimeout(() => {
+        if (turnCount === 0) {
+            setTimeout(() => {
             if (turnOrder[turnCount] === player1) {
                 setStyle1(activeStyle);
                 setStyle2(inactiveStyle);
@@ -31,7 +34,9 @@ export const BoardBoxes = ({
                 setStyle1(inactiveStyle);
                 setStyle2(activeStyle);
             }
-    },2000)},[])
+        } ,2000)
+        }
+    })
 
     useEffect(() => {
         if (turnCount === 0) {
@@ -44,7 +49,7 @@ export const BoardBoxes = ({
             setStyle1(inactiveStyle);
             setStyle2(activeStyle);
         }
-    })
+    }, [turnCount, turnOrder, player1, activeStyle, inactiveStyle])
 
     useEffect(() => {
         setTimeout(() => {
