@@ -29,3 +29,23 @@ span.ggi {
     letter-spacing: .01em;
 }
 
+@media only screen and (max-width: 500px) {
+    footer {
+        text-align: center;
+        padding: 1px 1px;
+        position: relative;
+        width: 100%;
+        z-index: 9;
+        bottom: 0;
+        background-color: black;
+        display: block;
+        border-radius: 15px;
+        font-family: nunito;
+    }
+    
+    #footertext {
+        font-size: .8rem;
+    }
+
+    
+  }

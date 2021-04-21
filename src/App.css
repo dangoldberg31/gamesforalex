@@ -58,3 +58,9 @@ main {
   margin: 0%;
   padding: 2%;
 }
+
+@media only screen and (max-width: 500px) {
+  #tictactoe {
+    font-size: 3rem;
+  }
+}

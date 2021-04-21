@@ -93,7 +93,7 @@ export const PlayerSelect = ({
             <div id="playerselect">
                 {/* <p>{turnOrder[turnCount] ? turnOrder : 'null'}</p> */}
                 <div className="flexspacer"></div>
-                <div className="playerchoicecontainer">
+                <div className="playerchoicecontainer" id="playerchoice1">
                     <h3>{player1 ? player1.name : 'Select Player 1'}</h3>
                     <img id="photo1" class="playerPhoto" src={player1 ? player1.photo: background} alt="player1"/>
                     <div className="formcontainer">
@@ -110,7 +110,7 @@ export const PlayerSelect = ({
                     </div>
                 </div>
                 <button className="submit" onClick={handleClick} >Play!</button>
-                <div className="playerchoicecontainer">
+                <div className="playerchoicecontainer" id="playerchoice2">
                     <h3>{player2 ? player2.name : 'Select Player 2'}</h3>
                     <img id="photo2" class="playerPhoto" src={player2 ? player2.photo: background} alt="player2"/>
                     <div className="formcontainer">
