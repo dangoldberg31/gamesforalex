@@ -66,10 +66,6 @@ h3 {
 
   }
 
-  #playerMessage {
-    font-size: 2rem;
-  }
-
   .playerPhoto {
       margin: 6%;
   }
@@ -103,8 +99,8 @@ h3 {
 @media only screen and (max-width: 500px) {
     #playerselect {
         text-align: center;
-        width: 100%;
-        margin: 0%;
+        width:100%;
+        margin: 0% auto;
         display: grid;
         grid-template-rows: 3;
         grid-template-columns: 1;
@@ -116,13 +112,15 @@ h3 {
         display: none;
     }
 
+    div.playerchoicecontainer {
+        width: 93%;
+    }
+
     #playerchoice1 {
-        width: 100%;
         grid-area: 1 / span 1;
     }
 
     #playerchoice2 {
-        width: 100%;
         grid-area: 3 / span 1;
     }
 
@@ -142,8 +140,8 @@ h3 {
     }
 
     .playerPhoto {
-        width: 100%;
-        margin: auto;
+        width: 40%;
+        margin: 1% auto;
         display: block;
 
     }
@@ -158,9 +156,99 @@ h3 {
         width: 100%;
     }
 
-    .playerRadio {
+    form.playerRadio {
         max-width: 30%;
         font-size: .8rem;
+        text-align: center;
+        display: flex;
+        align-content: space-around;
     }
 
+    input.radiobutton {
+        display: inline-block;
+        margin-left: 22%;
     }
+}
+
+@media only screen  and (max-width: 900px) {
+    #playerselect {
+        text-align: center;
+        width:100%;
+        margin: 0% auto;
+        display: flex;
+        align-content: space-between;
+        align-items: center;
+    }
+    
+    .flexspacer {
+        display: none;
+    }
+
+    div.playerchoicecontainer {
+        width: 40%;
+        display: inline-block;
+    }
+
+    #playerchoice1 {
+
+    }
+
+    #playerchoice2 {
+ 
+    }
+
+    button.submit {
+        padding: .5% 1%;
+        text-align: center;
+        border-radius: 15px;
+        background-color:  hsl(206, 50%, 50%);
+        font-weight: 700;
+        margin: 0x auto;
+        font-size: 1.2em;
+        font-family: Nunito;
+        display: inline-block;
+
+        font-weight: 600;
+    }
+
+    .playerPhoto {
+        width: 40%;
+        margin: 1% auto;
+        display: block;
+    }
+
+    h3 {
+        font-size: 1rem;
+        display: block;
+    }
+    
+    div.formcontainer {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    form.playerRadio {
+        width: 100%;
+        font-size: .8rem;
+        text-align: center;
+        display: flex;
+        align-content: space-around;
+        padding: 0;
+        margin: 0;
+        height: fit-content;
+    }
+
+    input.radiobutton {
+        display: inline-block;
+        font-size: 1rem;
+        padding: 0;
+        margin: 3%;
+    }
+
+    label {
+        margin: 0;
+        margin-right: 8%;
+    }
+}

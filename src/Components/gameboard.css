@@ -55,13 +55,11 @@ h2 {
     margin: 1%;
   } */
 
-  #playerMessage {
-    font-size: 2rem;
-  }
+
 
   @media only screen and (max-width: 500px) {
     #playerMessage {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
 

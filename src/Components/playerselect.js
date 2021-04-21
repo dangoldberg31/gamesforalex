@@ -99,11 +99,11 @@ export const PlayerSelect = ({
                     <div className="formcontainer">
                         <div className="spacer"></div>
                         <form className="playerRadio">
-                            <input id="Alex1" name="player1" type="radio"  onClick={handlePlayer1Change}  />
+                            <input id="Alex1" name="player1" type="radio"  className="radiobutton" onClick={handlePlayer1Change}  />
                             <label>Alex</label><br/>
-                            <input id="David1" name="player1" type="radio"  onClick={handlePlayer1Change} />
+                            <input id="David1" name="player1" type="radio"  className="radiobutton" onClick={handlePlayer1Change} />
                             <label>David</label><br/>
-                            <input id="Jess1" name="player1" type="radio"  onClick={handlePlayer1Change} />
+                            <input id="Jess1" name="player1" type="radio" className="radiobutton" onClick={handlePlayer1Change} />
                             <label>Jess</label><br/>
                         </form>
                         <div className="spacer"></div>
@@ -116,11 +116,11 @@ export const PlayerSelect = ({
                     <div className="formcontainer">
                         <div className="spacer"></div>
                         <form className="playerRadio">
-                            <input id="Alex2" name="player2" type="radio" value={alex} onClick={handlePlayer2Change} />
+                            <input id="Alex2" name="player2" type="radio" className="radiobutton" value={alex} onClick={handlePlayer2Change} />
                             <label>Alex</label><br/>
-                            <input id="David2" name="player2" type="radio" value={david} onClick={handlePlayer2Change} />
+                            <input id="David2" name="player2" type="radio" className="radiobutton" value={david} onClick={handlePlayer2Change} />
                             <label>David</label><br/>
-                            <input id="Jess2" name="player2" type="radio" value={jess} onClick={handlePlayer2Change} />
+                            <input id="Jess2" name="player2" type="radio" className="radiobutton" value={jess} onClick={handlePlayer2Change} />
                             <label>Jess</label><br/>
                         </form>
                         <div className="spacer"></div>

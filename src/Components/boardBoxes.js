@@ -63,7 +63,7 @@ export const BoardBoxes = ({
 
     return (
             <div id="boardcontainer" className="section" >
-                <div className="gameboardplayercontainer">
+                <div className="gameboardplayercontainer" id="boardplayer1">
                     <img id="photo1" className="playerphoto" src={player1.photo} alt="player 1" style={style1}/>
                     <span className="name">{player1.name}</span>
                     <span className="record">{player1.wins}-{player1.losses}</span>
@@ -90,7 +90,7 @@ export const BoardBoxes = ({
                         })}
                     </div>
                 </div>
-                <div className="gameboardplayercontainer">
+                <div className="gameboardplayercontainer" id="boardplayer2">
                     <img id="photo2" className="playerphoto" src={player2.photo} alt="player 2" style={style2}/>
                     <span className="name">{player2.name}</span>
                     <span className="record">{player2.wins}-{player2.losses}</span>

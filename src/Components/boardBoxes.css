@@ -108,4 +108,112 @@ div.coinspacer {
       .box {
         max-width: 100%;
     }
+
+    img.playerphoto {
+        width: 35%;
+        padding: 0;
+        display: inline-block;
+        margin: 0 2%;
+    }
+
+    span.name {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+
+    span.record {
+
+    }
+
+    div.gameboardplayercontainer {
+        display: flex;
+        width: 65%;
+        margin: 2%;
+        align-content: space-around;
+        align-items: center;
+    }
+
+    div.coincontainer {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    div.coinspacer {
+        display: none;
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    #boardcontainer {
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    #board {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 1%;
+        background-color: hsl(206, 50%, 50%);
+        align-content: center;
+        text-align: center;
+        padding: 1%;
+        margin: 0%;
+        border-radius: 15px;
+        width: 100%;
+      }
+
+      .box {
+        max-width: 100%;
+    }
+
+    img.playerphoto {
+        width: 25%;
+        padding: 0;
+        display: inline-block;
+        margin: 0 2%;
+    }
+
+    span.name {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+
+    span.record {
+
+    }
+
+    #exterior {
+        order: 3;
+    }
+
+    #boardplayer1 {
+        order: 1;
+        margin-left: 10%;
+    }
+
+    #boardplayer2 {
+        order: 2;
+        margin-right: 10%;
+    }
+
+    div.gameboardplayercontainer {
+        display: flex;
+        width: 30%;
+        margin: 2% 2%;
+        align-content: space-around;
+        align-items: center;
+    }
+
+    div.coincontainer {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    div.coinspacer {
+        display: none;
+    }
   }
