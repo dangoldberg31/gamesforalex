@@ -15,34 +15,36 @@ export const GameBoard = () => {
     const [newGameDisplay, setNewGameDisplay] = useState(false);
     const [boardState, setBoardState] = useState(Array(9).fill(0));
     const [winner, setWinner] = useState(false);  
+    const [cpuMove, setCpuMove] = useState(null)
 
     useEffect(() => {
         if (turnCount === 0) {
             return;
         }
         let check = checkForWinner();
-        if (check === false) {
+        if (check === false && turnCount !== 0) {
             setTimeout(() => {
                 setPlayerMessage(`It's ${turnOrder[turnCount].name}'s turn.`)
             },200)
             return;
-        }
-        let player1data = player1;
-        let player2data = player2; 
-        if (check === turnOrder[1]) {
-            turnOrder[1].wins += 1;
-            turnOrder[0].losses += 1;
-            setPlayer1(player1data);
-            setPlayer2(player2data);
-        } else if (check === turnOrder[0]) {
-            turnOrder[0].wins += 1;
-            turnOrder[1].losses += 1;
-            setPlayer1(player1data);
-            setPlayer2(player2data);
-        }
-            setTimeout(() => {
-                setNewGameDisplay(true)
-            },1500)
+        } else if (check !== false) {
+            let player1data = player1;
+            let player2data = player2; 
+            if (check === turnOrder[1]) {
+                turnOrder[1].wins += 1;
+                turnOrder[0].losses += 1;
+                setPlayer1(player1data);
+                setPlayer2(player2data);
+            } else if (check === turnOrder[0]) {
+                turnOrder[0].wins += 1;
+                turnOrder[1].losses += 1;
+                setPlayer1(player1data);
+                setPlayer2(player2data);
+            }
+                setTimeout(() => {
+                    setNewGameDisplay(true)
+                },1500)
+            }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[turnCount])
 
@@ -71,6 +73,26 @@ export const GameBoard = () => {
             return false;
         }
     }
+
+    useEffect(() => {
+        if (BoardBoxesContainer === false) {
+            return;
+        } else if (!turnOrder[turnCount]) {
+            return;
+        } else if (turnOrder[turnCount].name === 'Computer') {
+            let options = [];
+            for (let i = 0; i < boardState.length; i++) {
+                if (boardState[i] === 0) {
+                    options.push(i);
+                }  
+            }
+            let chooseIndex = Math.floor(Math.random()*options.length);
+            setTimeout(() => {
+                setCpuMove(options[chooseIndex])
+            },1000)
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[turnOrder, turnCount])
 
     return (
         <div>
@@ -107,6 +129,7 @@ export const GameBoard = () => {
                 turnCount={turnCount} setTurnCount={setTurnCount}      
                 winner={winner}    
                 newGameDisplay={newGameDisplay} setNewGameDisplay={setNewGameDisplay}
+                cpuMove={cpuMove}
                 />
 
         </div>

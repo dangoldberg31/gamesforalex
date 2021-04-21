@@ -8,8 +8,9 @@ export const Box = ({
     turnOrder,
     boardState, setBoardState, 
     winner,
-    newGameDisplay, setNewGameDisplay
-    // player1, player2,
+    newGameDisplay, setNewGameDisplay,
+    cpuMove,
+    player1, player2
 }) => {
         
     const [boxAssign, setBoxAssign] = useState('free');
@@ -27,15 +28,27 @@ export const Box = ({
     const handleClick = (event) => {
         if (boxAssign !== 'free') {
             return;
+        } else if (winner !== false) {
+            return;
+        } else {
+            setBoxAssign(turnOrder[turnCount].name);
+            setBoxValue(boxVal())
+            setBoxPhoto(turnOrder[turnCount].photo)
+            let boardArray = boardState;
+            boardArray[id] = boxVal();
+            setBoardState(boardArray)
+            setTurnCount((prev) => prev+1)
         }
-        setBoxAssign(turnOrder[turnCount].name);
-        setBoxValue(boxVal())
-        setBoxPhoto(turnOrder[turnCount].photo)
-        let boardArray = boardState;
-        boardArray[id] = boxVal();
-        setBoardState(boardArray)
-        setTurnCount((prev) => prev+1)
     }
+
+    useEffect(() => {
+        if (player2.name === 'Computer' && cpuMove === id) {
+            setTimeout(() => {
+                handleClick()
+            },500)
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[cpuMove])
 
     useEffect(() => {
         if (winner === turnOrder[1]) {

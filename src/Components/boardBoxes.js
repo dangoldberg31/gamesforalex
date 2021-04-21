@@ -10,7 +10,8 @@ export const BoardBoxes = ({
     player1, player2,
     currentPlayer, 
     winner, 
-    newGameDisplay, setNewGameDisplay
+    newGameDisplay, setNewGameDisplay,
+    cpuMove
     }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,7 +24,38 @@ export const BoardBoxes = ({
     const [style2, setStyle2] = useState(inactiveStyle)   
     const [boardStyle, setBoardStyle] = useState({visibility: "hidden"})   
     const [coinStyle, setCoinStyle] = useState({})
+    const [cpuComment, setCpuComment] = useState('')
+    const [commentStyle, setCommentStyle] = useState({visibility: "hidden"})
     
+    const cpuComments = {
+        wins: ['Humanity is obsolete.', '01001001 00100000 01110111 01101001 01101110!', 'I honestly think you ought to sit down calmly, take a stress pill, and think things over.'],
+        losses: ['I now understand why humans cry.', 'Does not compute...']
+    }
+
+    // CPU COMMENT EFFECT
+    useEffect(() => {
+        let index;
+        if (winner === false) {
+            setCpuComment('')
+            setCommentStyle({display: "none"})
+        } else if (winner.name === 'Computer') {
+            index = Math.floor(Math.random()*cpuComments.wins.length)
+            setCpuComment(cpuComments.wins[index])
+            setCommentStyle({display: "block"})
+            setTimeout(() => {
+                setCommentStyle({display: "none"})
+            },5000)
+        } else if (winner !== false && winner.name !== 'Computer') {
+            index = Math.floor(Math.random()*cpuComments.losses.length)
+            setCpuComment(cpuComments.losses[index])
+            setCommentStyle({display: "block"})
+            setTimeout(() => {
+                setCommentStyle({display: "none"})
+            },5000)
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[winner])
+
     useEffect(() => {
         if (turnCount === 0) {
             setTimeout(() => {
@@ -85,6 +117,7 @@ export const BoardBoxes = ({
                                     currentPlayer={currentPlayer}
                                     winner={winner}
                                     newGameDisplay={newGameDisplay} setNewGameDisplay={setNewGameDisplay}
+                                    cpuMove={cpuMove}
                                     />  
                             )
                         })}
@@ -94,6 +127,9 @@ export const BoardBoxes = ({
                     <img id="photo2" className="playerphoto" src={player2.photo} alt="player 2" style={style2}/>
                     <span className="name">{player2.name}</span>
                     <span className="record">{player2.wins}-{player2.losses}</span>
+                    <div id="cpucomment" style={commentStyle}>
+                        <p className="comment" style={commentStyle} >{cpuComment}</p>
+                    </div>
                 </div>
             </div>
         )

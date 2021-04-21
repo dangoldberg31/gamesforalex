@@ -19,6 +19,21 @@ div.box {
     align-content: center;
 }
 
+#cpucomment {
+    background-color: white;
+    text-align: center;
+    border-radius: 25px;
+    padding: 2%;
+    width: 162px;
+}
+
+.comment {
+    font-size: 1.2rem;
+    padding: 2%;
+    margin: 2%;
+    width: 162px;
+}
+
 span.name {
     text-align: center;
     display: block;
@@ -121,10 +136,6 @@ div.coinspacer {
         margin-left: 5%;
     }
 
-    span.record {
-
-    }
-
     div.gameboardplayercontainer {
         display: flex;
         width: 65%;
@@ -180,10 +191,6 @@ div.coinspacer {
     span.name {
         margin-right: 5%;
         margin-left: 5%;
-    }
-
-    span.record {
-
     }
 
     #exterior {

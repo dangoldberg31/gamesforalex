@@ -3,6 +3,7 @@ import alexPhoto from './alexsunglasses.jpg';
 import davidPhoto from './david.jpg';
 import jessPhoto from './jess.jpg';
 import background from './background.jpg';
+import computerPhoto from './computer.jpg';
 import { useEffect } from 'react';
 
 export const PlayerSelect = ({
@@ -29,6 +30,12 @@ export const PlayerSelect = ({
     const jess = 
         {name: 'Jess',
         photo: jessPhoto,
+        wins: 0,
+        losses: 0
+    };
+    const computer = 
+        {name: 'Computer',
+        photo: computerPhoto,
         wins: 0,
         losses: 0
     };
@@ -67,6 +74,8 @@ export const PlayerSelect = ({
             setPlayer2(jess);
         } else if (event.target.id === 'David2') {
             setPlayer2(david);
+        } else if (event.target.id === 'Computer2') {
+            setPlayer2(computer);
         }}
 
     const handleClick = () => {
@@ -116,12 +125,14 @@ export const PlayerSelect = ({
                     <div className="formcontainer">
                         <div className="spacer"></div>
                         <form className="playerRadio">
-                            <input id="Alex2" name="player2" type="radio" className="radiobutton" value={alex} onClick={handlePlayer2Change} />
+                            <input id="Alex2" name="player2" type="radio" className="radiobutton" onClick={handlePlayer2Change} />
                             <label>Alex</label><br/>
-                            <input id="David2" name="player2" type="radio" className="radiobutton" value={david} onClick={handlePlayer2Change} />
+                            <input id="David2" name="player2" type="radio" className="radiobutton" onClick={handlePlayer2Change} />
                             <label>David</label><br/>
-                            <input id="Jess2" name="player2" type="radio" className="radiobutton" value={jess} onClick={handlePlayer2Change} />
+                            <input id="Jess2" name="player2" type="radio" className="radiobutton" onClick={handlePlayer2Change} />
                             <label>Jess</label><br/>
+                            <input id="Computer2" name="player2" type="radio" className="radiobutton" onClick={handlePlayer2Change} />
+                            <label>Computer</label><br/>
                         </form>
                         <div className="spacer"></div>
                     </div>
