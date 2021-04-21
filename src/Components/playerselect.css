@@ -23,11 +23,6 @@ div.playerchoicecontainer {
     border-radius: 15px;
 }
 
-.submit {
-    font-size: 1.2em;
-    margin-top: 5%;
-}
-
 form.playerRadio {
     padding: 3%;
     width: 80%;
@@ -42,18 +37,19 @@ form.start {
     padding: 0%;
 }
 
-button {
+button.submit {
     padding: .5% 1%;
     text-align: center;
     border-radius: 15px;
     background-color:  hsl(206, 50%, 50%);
     font-weight: 700;
     margin: 0;
-    font-size: 5rem;
+    font-size: 1.2em;
     font-family: Nunito;
     display: inline-block;
     height: 15%;
     font-weight: 600;
+    margin-top: 5%;
 }
 
 h3 {

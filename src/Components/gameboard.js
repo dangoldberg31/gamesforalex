@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import './gameboard.css';
 import {PlayerSelectContainer} from './playerSelectContainer';
 import {BoardBoxesContainer} from './boardBoxesContainer';
+import {NewGameContainer} from './newGameContainer';
 
 export const GameBoard = () => {
     const [player1, setPlayer1] = useState(null);
@@ -11,18 +12,39 @@ export const GameBoard = () => {
     const [playerMessage, setPlayerMessage] = useState('Select Players');
     const [playerSelectDisplay, setPlayerSelectDisplay] = useState(true);
     const [boardDisplay, setBoardDisplay] = useState(false);
+    const [newGameDisplay, setNewGameDisplay] = useState(false);
     const [boardState, setBoardState] = useState(Array(9).fill(0));
     const [winner, setWinner] = useState(false);  
 
     useEffect(() => {
-        checkForWinner()
-    })
-
-    useEffect(() => {
-        if (turnCount !== 0 && winner === false) {
-            setPlayerMessage(`It's ${turnOrder[turnCount].name}'s turn.`)
+        if (turnCount === 0) {
+            return;
         }
-    },[turnCount, winner, turnOrder])
+        let check = checkForWinner();
+        if (check === false) {
+            setTimeout(() => {
+                setPlayerMessage(`It's ${turnOrder[turnCount].name}'s turn.`)
+            },200)
+            return;
+        }
+        let player1data = player1;
+        let player2data = player2; 
+        if (check === turnOrder[1]) {
+            turnOrder[1].wins += 1;
+            turnOrder[0].losses += 1;
+            setPlayer1(player1data);
+            setPlayer2(player2data);
+        } else if (check === turnOrder[0]) {
+            turnOrder[0].wins += 1;
+            turnOrder[1].losses += 1;
+            setPlayer1(player1data);
+            setPlayer2(player2data);
+        }
+            setTimeout(() => {
+                setNewGameDisplay(true)
+            },1500)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[turnCount])
 
 
     const checkForWinner = () => {       
@@ -38,31 +60,31 @@ export const GameBoard = () => {
         let dia1 = [ boardState[0], boardState[4], boardState[8] ].reduce(reduceFunc);
         let dia2 = [ boardState[2], boardState[4], boardState[6] ].reduce(reduceFunc);
         if (row1 === 3 || row2 === 3 || row3 === 3 || col1 === 3 || col2 === 3 || col3 === 3 || dia1 === 3 || dia2 === 3) {
-            setWinner(true);
+            setWinner(turnOrder[1]);
             setPlayerMessage(`${turnOrder[1].name} wins!`);
-            return player1;
+            return turnOrder[1];
         } else if (row1 === -3 || row2 === -3 || row3 === -3 || col1 === -3 || col2 === -3 || col3 === -3 || dia1 === -3 || dia2 === -3) {
-            setWinner(true);
+            setWinner(turnOrder[0]);
             setPlayerMessage(`${turnOrder[0].name} wins!`);
-            return player2;
+            return turnOrder[2];
         } else {
             return false;
         }
     }
-//     const endGame = () => {
-//         setTimeout(() => setBoardState[0]image(photo),1000);
-//         setTimeout(() => setBoardState[0]image(photo),1500);
-//         setTimeout(() => setBoardState[0]image(photo),2000);
-//         setTimeout(() => setBoardState[3]image(photo),2500);
-//         setTimeout(() => setBoardState[4]image(photo),3000);
-//         setTimeout(() => setBoardState[5]image(photo),3500);
-//         setTimeout(() => setBoardState[6]image(photo),4000);
-//         setTimeout(() => setBoardState[7]image(photo),4500);
-//         setTimeout(() => setBoardState[8]image(photo),5000)
-// }
 
     return (
         <div>
+            <NewGameContainer 
+                winner={winner} setWinner={setWinner}
+                newGameDisplay={newGameDisplay} setNewGameDisplay={setNewGameDisplay}
+                boardState={boardState} setBoardState={setBoardState} 
+                turnCount={turnCount} setTurnCount={setTurnCount}
+                turnOrder={turnOrder} setTurnOrder={setTurnOrder}   
+                setPlayerMessage={setPlayerMessage}
+                setPlayer1={setPlayer1} setPlayer2={setPlayer2}
+                setPlayerSelectDisplay={setPlayerSelectDisplay}
+                setBoardDisplay={setBoardDisplay}
+                />
             <h2 id="playerMessage">{playerMessage}</h2>
             {/* <h4>{player1 ? player1.name : null}</h4> */}
             {/* <h4>{!playerSelectDisplay ? turnOrder[0].name+turnOrder[1].name: null}</h4> */}
@@ -74,6 +96,7 @@ export const GameBoard = () => {
                 turnOrder={turnOrder} setTurnOrder={setTurnOrder}
                 turnCount={turnCount}
                 playerSelectDisplay={playerSelectDisplay} setPlayerSelectDisplay={setPlayerSelectDisplay} />
+            
             <BoardBoxesContainer 
                 boardDisplay={boardDisplay} setBoardDisplay={setBoardDisplay}
                 player1={player1}
@@ -81,8 +104,11 @@ export const GameBoard = () => {
                 setPlayerMessage={setPlayerMessage}
                 boardState={boardState} setBoardState={setBoardState} 
                 turnOrder={turnOrder} 
-                turnCount={turnCount} setTurnCount={setTurnCount}          
+                turnCount={turnCount} setTurnCount={setTurnCount}      
+                winner={winner}    
+                newGameDisplay={newGameDisplay} setNewGameDisplay={setNewGameDisplay}
                 />
+
         </div>
     )
 }

@@ -1,12 +1,36 @@
 #newgame {
     text-align: center;
-    align-content: center;
-    justify-content: space-around;
+    align-content: space-around;
     padding: 1%;
+    background-color: hsl(206, 50%, 70%);
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+div.buttoncontainers {
+    display: inline-block;
+    width: 50%;
+    margin: 0, auto;
+    text-align: center;
+
+}
+
+div.spacer {
+    width: 30%;
+    display: inline-block;
 }
 
 button.playagain {
     display: block;
     margin: 1% auto;
     padding: 1%;
+    font-size: 1.7rem;
+    background-color: hsl(206, 50%, 50%);
+    border: none;
+    opacity: 1;
+    border-radius: 15px;
+    font-family: 'bebas neue';
+    width: 25%;
+    display: inline-block;
 }

@@ -26,6 +26,13 @@ span.name {
     font-family: 'bebas neue';
 }
 
+span.record {
+    text-align: center;
+    display: block;
+    font-size: 1.3rem;
+    font-family: 'bebas neue';
+}
+
 #exterior {
     width: 5fr;
     margin: 2%;

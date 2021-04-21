@@ -33,17 +33,18 @@ export const PlayerSelect = ({
         losses: 0
     };
     
-    // THIS MAY RENDER THROUGHTOUT THE GAME AND SCREW UP THE TURN ORDER
     useEffect(() => {
         if (player1 !== null && player2 !== null) {
             let list = [];
+            let shuffledVal;
             for (let i = 5; i>0; i--) {
                 list.push(player1);
                 list.push(player2);
             }
             let randoCalcission = Math.floor(Math.random()*2)
             if (randoCalcission === 0) {
-                list.shift();
+                shuffledVal = list.shift();
+                list.push(shuffledVal)
             }
             setTurnOrder(list)
         }
