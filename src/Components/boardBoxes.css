@@ -60,4 +60,23 @@ span.record {
     height: 100%;
   }
 
- 
+div.coincontainer {
+    width: 100%;
+    align-content: center;
+}
+
+div.coinspacer {
+    width: 30%;
+    display: inline-block;
+}
+
+ img.spinningcoin {
+     background-color: hsl(206, 50%, 80%);
+     width: 40%;
+     align-self: center;
+     margin: 0% auto;
+     padding: 2%;
+     text-align: center;
+     align-content: center;
+     display: inline-block;
+ }

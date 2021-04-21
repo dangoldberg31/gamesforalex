@@ -22,7 +22,7 @@ export const BoardBoxes = ({
     const [style1, setStyle1] = useState(inactiveStyle)
     const [style2, setStyle2] = useState(inactiveStyle)   
     const [boardStyle, setBoardStyle] = useState({visibility: "hidden"})   
-    
+    const [coinStyle, setCoinStyle] = useState({})
     
     useEffect(() => {
         if (turnCount === 0) {
@@ -56,6 +56,7 @@ export const BoardBoxes = ({
 
     useEffect(() => {
         setTimeout(() => {
+            setCoinStyle({display: "none"})
             setBoardStyle({visiblity: "visible"})
         }, 2000)
     },[])
@@ -68,6 +69,11 @@ export const BoardBoxes = ({
                     <span className="record">{player1.wins}-{player1.losses}</span>
                 </div>
                 <div id="exterior">
+                    <div className="coincontainer">
+                        <div className="coinspacer"></div>
+                        <img class="spinningcoin" src="https://media.giphy.com/media/NW4hBBjqMJfOg/source.gif" alt="spinning coin" style={coinStyle} />
+                        <div className="coinspacer"></div>
+                    </div>
                     <div id="board" style={boardStyle}>
                         {boxNums.map(i => {
                             return( 
