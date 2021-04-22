@@ -17,6 +17,7 @@ export const Box = ({
     const [boxValue, setBoxValue] = useState(0);
     const [boxPhoto, setBoxPhoto] = useState(background);
 
+    //SETS PLAYERS BOXES TO 1 OR -1 TO MAKE IT EASIER TO CHECK WIN CONDITION
     const boxVal = () => {
         let num = turnCount % 2;
         if (num === 0) {
@@ -41,15 +42,17 @@ export const Box = ({
         }
     }
 
+    //CAUSES CPUMOVE SELECTION TO ACT LIKE A CLICK
     useEffect(() => {
         if (player2.name === 'Computer' && cpuMove === id) {
             setTimeout(() => {
                 handleClick()
-            },500)
+            },1000)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[cpuMove])
 
+    //SETS ALL BOXES TO DISPLAY WINNER
     useEffect(() => {
         if (winner === turnOrder[1]) {
             setBoxPhoto(turnOrder[1].photo)
@@ -58,6 +61,7 @@ export const Box = ({
         }
     },[winner,turnOrder])
 
+    //RESETS BOXES FOR NEW GAMES
     useEffect(() => {
         if (newGameDisplay === true) {
             setTimeout(() => {
