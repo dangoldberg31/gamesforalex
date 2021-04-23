@@ -11,7 +11,9 @@ export const BoardBoxesContainer = ({
     currentPlayer,
     winner,
     newGameDisplay, setNewGameDisplay,
-    cpuMove
+    cpuMove,
+    sliderValue, setSliderValue,
+    setCPUBackupToggle
     }) => {
 
     if (boardDisplay === true) {
@@ -26,6 +28,8 @@ export const BoardBoxesContainer = ({
                 winner={winner}
                 newGameDisplay={newGameDisplay} setNewGameDisplay={setNewGameDisplay}
                 cpuMove={cpuMove}
+                sliderValue={sliderValue} setSliderValue={setSliderValue}
+                setCPUBackupToggle={setCPUBackupToggle}
                 />
             </div>
         )

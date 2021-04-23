@@ -13,7 +13,8 @@ export const PlayerSelect = ({
     playerSelectDisplay, setPlayerSelectDisplay,
     boardDisplay, setBoardDisplay,
     turnOrder, setTurnOrder,
-    turnCount
+    turnCount,
+
     }) => {
     const alex = 
         {name: 'Alex',
@@ -95,8 +96,6 @@ export const PlayerSelect = ({
             }, 1000)
         }
     }
-
-
         
     return (
             <div id="playerselect">

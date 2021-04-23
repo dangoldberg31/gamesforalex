@@ -11,7 +11,9 @@ export const BoardBoxes = ({
     currentPlayer, 
     winner, 
     newGameDisplay, setNewGameDisplay,
-    cpuMove
+    cpuMove,
+    sliderValue, setSliderValue,
+    setCPUBackupToggle
     }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,6 +28,7 @@ export const BoardBoxes = ({
     const [coinStyle, setCoinStyle] = useState({})
     const [cpuComment, setCpuComment] = useState('')
     const [commentStyle, setCommentStyle] = useState({visibility: "hidden"})
+    const [sliderStyle, setSliderStyle] = useState({display: "none"});
     
     const cpuComments = {
         wins: ['Humanity is obsolete.', '01001001 00100000 01110111 01101001 01101110!', 'I honestly think you ought to sit down calmly, take a stress pill, and think things over.'],
@@ -93,6 +96,20 @@ export const BoardBoxes = ({
         }, 2000)
     },[])
 
+    useEffect(() => {
+        if (player2.name === 'Computer') {
+            setSliderStyle({display: "block"})
+        }
+    },[player2.name])
+
+    const handleSliderChange = (event) => {
+        setSliderValue(event.target.value)
+    }
+
+    const backupCPUMove = () => {
+        setCPUBackupToggle((prev) => prev+1)
+    }
+
     return (
             <div id="boardcontainer" className="section" >
                 <div className="gameboardplayercontainer" id="boardplayer1">
@@ -124,12 +141,19 @@ export const BoardBoxes = ({
                     </div>
                 </div>
                 <div className="gameboardplayercontainer" id="boardplayer2">
-                    <img id="photo2" className="playerphoto" src={player2.photo} alt="player 2" style={style2}/>
+                    <img id="photo2" className="playerphoto" src={player2.photo} alt="player 2" style={style2} onClick={backupCPUMove} />
                     <span className="name">{player2.name}</span>
                     <span className="record">{player2.wins}-{player2.losses}</span>
                     <div id="cpucomment" style={commentStyle}>
                         <p className="comment" style={commentStyle} >{cpuComment}</p>
                     </div>
+                    <div id="slidercontainer" style={sliderStyle}>
+                        <form id="sliderForm">
+                            <label>CPU Difficulty</label><br/>
+                            <input id="cpudifficulty" name="difficulty" type="range" min="0" default="10" step="1" max="10" className="range" onChange={handleSliderChange} />
+                            <p id="cpudifvalue">{sliderValue}</p>
+                        </form>
+</div>
                 </div>
             </div>
         )

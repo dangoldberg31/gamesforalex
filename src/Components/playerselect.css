@@ -189,14 +189,6 @@ h3 {
         display: inline-block;
     }
 
-    #playerchoice1 {
-
-    }
-
-    #playerchoice2 {
- 
-    }
-
     button.submit {
         padding: .5% 1%;
         text-align: center;
@@ -250,4 +242,5 @@ h3 {
         margin: 0;
         margin-right: 8%;
     }
+
 }

@@ -96,6 +96,24 @@ div.coinspacer {
      display: inline-block;
  }
 
+ #slidercontainer {
+    display: block;
+    width: 100%;
+    margin: 5%;
+    text-align: center;
+    align-items: center;
+}
+#cpudifficulty {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#cpudifvalue {
+    text-align: center;
+}
+
+
  @media only screen and (max-width: 500px) {
     #boardcontainer {
         margin: 0 auto;
